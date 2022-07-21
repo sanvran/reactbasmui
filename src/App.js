@@ -41,7 +41,7 @@ const App = () => {
 		e.preventDefault();
 		console.log("E value====>", 'Role:', role, 'Date:', date);
 		const filledData = { role, date }
-		if (filledData.role === '' && filledData.date === '') return alert('Please enter name and date');
+		if (role === '' || date === '') return alert('Please enter name and date');
 		setApendInArr((ls) => [...ls, filledData])
 		setRole('')
 		setDate('')
@@ -94,12 +94,13 @@ const App = () => {
 							<th>Action</th>
 						</tr>
 						{
+							
 							apendInArr.map((curEle, ind) => {
 								return (
 									<tr key={ind}>
 										<td>{curEle.role }</td>
 										<td>{curEle.date }</td>
-										<td><button onClick={(e)=>{delEle(ind)}}> Delete</button></td>
+										<td><button onClick={()=>delEle(ind)}> Delete</button></td>
 									</tr>
 								)
 							})
