@@ -43,16 +43,19 @@ const App = () => {
 		const filledData = { role, date }
 		if (filledData.role === '' && filledData.date === '') return alert('Please enter name and date');
 		setApendInArr((ls) => [...ls, filledData])
-		// console.log("Append array==>", apendInArr)
+		setRole('')
+		setDate('')
+		console.log("Append array==>", apendInArr)
 	};
 
 	// del ele
-	const delEle = (ind) => {
+	const delEle = ind => {
 		console.log("index", ind)
-		let cpy = apendInArr;
-		cpy.splice(ind, 1)
-		console.log("new arr", cpy)
-		setApendInArr(cpy)
+		const cpyarr = [...apendInArr];
+		cpyarr.splice(ind, 1);
+		setApendInArr(cpyarr)
+	   console.log("cpyarr", cpyarr)
+		// setApendInArr(cpy)
 	}
 
 	const classes = useStyles();
@@ -96,7 +99,7 @@ const App = () => {
 									<tr key={ind}>
 										<td>{curEle.role }</td>
 										<td>{curEle.date }</td>
-										<td><button onClick={()=>delEle(ind)}> Delete</button></td>
+										<td><button onClick={(e)=>{delEle(ind)}}> Delete</button></td>
 									</tr>
 								)
 							})
